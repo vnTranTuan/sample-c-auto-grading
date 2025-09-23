@@ -1,0 +1,37 @@
+{
+    "configurations": [
+        {
+            //name : đặt tên tùy ý cho cấu hình debug
+            "name": "BUILD and DEBUG SAMPLE C",
+            "type": "cppdbg",
+            "request": "launch",
+            // đường dẫn và tên binary file sau khi build
+            // GIỐNG VỚI mục task.json \ args \ -o
+            "program": "${workspaceFolder}/my_program.exe",
+            "args": [],
+            //stopAtEntry: true/ false, true: nếu muốn dừng lại ở dòng ĐẦU TIÊN CỦA main
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            // đường dẫn đến trình gỡ lỗi (debugger)
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            // preLaunchTask: BẮT BUỘC GIỐNG VỚI mục task.json \ label
+            "preLaunchTask": "BUILD SAMPLE C"
+        }
+    ],
+    "version": "2.0.0"
+}

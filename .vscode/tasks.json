@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // BUILD SAMPLE C
+        {
+            "label": "BUILD SAMPLE C",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "my_program",
+                "main.c",
+                "src/my_functions.c",
+                "-I",
+                "include",
+                "-g"
+            ],
+            "group": "build",
+            "detail": "Biên dịch SAMPLE C",
+            "problemMatcher": "$gcc"
+        },
+
+        // BUILD TEST SAMPLE C
+        {
+            "label": "BUILD TEST SAMPLE C",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "test_runner",
+                "test/test_tinh_tong.c",
+                "src/my_functions.c",
+                // link CUnit library, tại thư mục lib
+                "-L", "lib", "-lCUnit",
+                "-I",
+                "include",
+                "-g"
+            ],
+            "group": "build",
+            "detail": "Biên dịch TEST SAMPLE C",
+            "problemMatcher": "$gcc"
+        },
+        
+        // RUN TEST
+        {
+            "label": "run_test",
+            "type": "shell",
+            "command": "./test_runner",
+            "dependsOn": "BUILD TEST SAMPLE C",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+
+    ]
+}
