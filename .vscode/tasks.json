@@ -32,8 +32,11 @@
                 "src/my_functions.c",
                 "-I",
                 "include",
+                // library, đặt tại thư mục lib
+                "-L", 
+                "lib", 
                 // link CUnit library, tại thư mục lib
-                "-L", "lib", "-lCUnit",
+                "-lCUnit"
             ],
             "group": "build",
             "detail": "Biên dịch TEST SAMPLE C",
@@ -47,8 +50,9 @@
             "command": "./test_runner",
             "dependsOn": "BUILD TEST SAMPLE C",
             "group": {
-                "kind": "test",
-                "isDefault": true
+                "kind": "test"
+                // true để đặt làm task test mặc định
+                // "isDefault": true
             }
         }
 
